@@ -1,14 +1,21 @@
 name: build
 on:
-  push:
+  pull_request:
     branches:
-      - 
-
+      - master
 jobs:
   build:
     name: app_build
-    uses: docker/build-push-actions@v3
-    with:
-      context: .
-      file: ./Dockerfile
-      tags: test_project
+    image: python:3.8-slim-busters
+    run: "python <<< "print('Hello')""
+
+name: test
+on:
+  push:
+    branches:
+      - dev
+  jobs:
+    test:
+      name: test app
+      image: python:3.8-slim-busters
+      run: "python <<< "print('Hello')""
