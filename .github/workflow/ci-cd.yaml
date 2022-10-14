@@ -1,0 +1,14 @@
+name: build
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    name: app_build
+    uses: docker/build-push-actions@v3
+    with:
+      context: .
+      file: ./Dockerfile
+      tags: test_project
